@@ -26,7 +26,7 @@
         let remainTime=parseInt(buttonText.match(/\((\d+)\)/)[1], 10);
         remainTime--;
         buttonText=buttonText.replace(/\(\d+\)/, `(${remainTime})`);
-        refteshButton.innerHTML=buttonText;
+        refreshButton.innerHTML=buttonText;
         if(remainTime<=0){
           onRefresh();
         }
