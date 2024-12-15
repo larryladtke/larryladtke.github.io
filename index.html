@@ -4,8 +4,33 @@
   </head>
 
   <body>
-    <h1>hi there</h1>
+    <h1>Hi there</h1>
     <p>I am Larry, and send you a message ;)</p>
     <p>The messages will appear here</p>
+    <button id="refreshButton" title="press it if you want a manual refresh">Refresh (15)</button>
   </body>
+  <script>
+    function onRefresh() {
+      window.reload();
+    }
+    setTimeout(function onload(){
+      const refreshButton = document.getElementById('refreshButton');
+      if(!refreshButton){
+        console.warn('cannot get button');
+        setTimeout(onload, 3000);
+        return;
+      }
+      refreshButton.addEventListener('click', onRefresh);
+      setInterval(()=>{
+        let buttonText=refreshButton.textContent;
+        let remainTime=parseInt(buttonText.match(/\((\d+)\)/)[1], 10);
+        remainTime--;
+        buttonText=buttonText.replace(/\(\d+\)/, `(${remainTime})`);
+        refteshButton.innerHTML=buttonText;
+        if(remainTime<=0){
+          onRefresh();
+        }
+      },999);
+    },1);
+  </script>
 </html>
